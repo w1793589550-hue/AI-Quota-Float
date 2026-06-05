@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Quota Float</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="float-shell" id="app">
+    <section class="panel-view" id="panelView" aria-label="AI 额度悬浮窗">
+      <button class="panel-close-button" id="panelCloseButton" type="button" aria-label="退出悬浮窗">×</button>
+      <button class="collapse-button" id="collapseButton" type="button" aria-label="收起为横条">⌃</button>
+      <button class="theme-toggle-button" id="themeToggleButton" type="button" aria-label="切换黑白主题">
+        <span></span>
+      </button>
+      <div class="panel-grip" aria-hidden="true"></div>
+      <div class="panel-title">
+        <span>AI Quota</span>
+        <strong>额度观察</strong>
+      </div>
+      <div class="quota-list" id="quotaList"></div>
+      <footer class="panel-actions">
+        <button class="refresh-button" id="refreshButton" type="button">刷新</button>
+        <div class="mode-actions">
+          <button class="icon-action deer-button" id="deerButton" type="button" aria-label="切换为小鹿">
+            <img src="../assets/deer-mascot.png" alt="" draggable="false">
+          </button>
+          <button class="icon-action settings-button" id="settingsButton" type="button" aria-label="打开设置">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 8.4a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2Zm8.4 3.6c0-.42-.04-.82-.12-1.22l2.02-1.58-1.92-3.32-2.38.96a8.5 8.5 0 0 0-2.1-1.22L15.54 3h-3.84l-.36 2.62a8.5 8.5 0 0 0-2.1 1.22l-2.38-.96-1.92 3.32 2.02 1.58a6.4 6.4 0 0 0 0 2.44l-2.02 1.58 1.92 3.32 2.38-.96c.64.5 1.34.9 2.1 1.22l.36 2.62h3.84l.36-2.62c.76-.32 1.46-.72 2.1-1.22l2.38.96 1.92-3.32-2.02-1.58c.08-.4.12-.8.12-1.22Z"/>
+            </svg>
+          </button>
+        </div>
+      </footer>
+      <div class="resize-handle" id="resizeHandle" aria-hidden="true"></div>
+    </section>
+
+    <section class="bar-view" id="barView" aria-label="AI 额度横条">
+      <div class="bar-drag">
+        <span>AI Quota</span>
+        <strong id="barSummary">0 项</strong>
+      </div>
+      <button class="bar-expand" id="barExpandButton" type="button">展开</button>
+      <button class="bar-close" id="barCloseButton" type="button" aria-label="退出悬浮窗">×</button>
+    </section>
+
+    <section class="deer-view" id="deerView">
+      <div class="deer-stage" id="deerStage">
+        <div class="deer-bubble" id="deerBubble" hidden></div>
+        <button class="deer-body" id="deerBody" type="button" aria-label="点击查看额度悬浮窗">
+          <img src="../assets/deer-mascot.png" alt="" draggable="false">
+        </button>
+      </div>
+    </section>
+
+    <section class="settings-view" id="settingsView" hidden>
+      <header>
+        <div>
+          <span>Settings</span>
+          <h1>服务与 Key</h1>
+        </div>
+        <button class="close-settings" id="closeSettings" type="button" aria-label="关闭设置">×</button>
+      </header>
+      <p class="settings-hint">点击模型名称展开配置。Key 仅保存在本机，用于读取或手动展示额度。</p>
+      <div class="appearance-settings" id="appearanceSettings" aria-label="外观设置"></div>
+      <div class="auto-refresh-settings" id="autoRefreshSettings" aria-label="定时刷新设置"></div>
+      <div class="settings-list" id="settingsList"></div>
+    </section>
+
+    <section class="close-choice-view" id="closeChoiceView" hidden>
+      <div class="close-choice-card">
+        <span>Close</span>
+        <h2>要怎么收起额度看板？</h2>
+        <p>最小化到托盘会继续保留程序，退出则完全关闭悬浮窗。</p>
+        <div class="close-choice-actions">
+          <button class="choice-secondary" id="choiceCancelButton" type="button">取消</button>
+          <button class="choice-primary" id="choiceTrayButton" type="button">最小化到托盘</button>
+          <button class="choice-danger" id="choiceQuitButton" type="button">退出</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="./renderer.js"></script>
+</body>
+</html>

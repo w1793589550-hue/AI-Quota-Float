@@ -1,0 +1,13 @@
+{
+  "name": "ai-quota-floating-electron",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Desktop floating AI quota watcher with deer mode.",
+  "main": "src/main.cjs",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^31.7.7"
+  }
+}
